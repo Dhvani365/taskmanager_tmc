@@ -6,7 +6,6 @@ import React from 'react';
 const Layout = ({ children }) => {
   return (
     <div className="layout">
-      {/* <Navbar /> */}
       <main className="content">{children}</main>
       {/* <Footer /> */}
     </div>
