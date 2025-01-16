@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <h1>TaskManager</h1>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
-        <li><Link to="/login">Login</Link></li>
-      </ul>
+    <nav className="navbar" >
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/login">Login</Link>
     </nav>
   );
 };
