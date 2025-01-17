@@ -13,6 +13,18 @@ const members = [
     name: "Priya",
   },
 ];
+// link to api : 127.0.0.1:3000/api/member/getMembers
+// Data format from backend
+// {"data": [
+//         {
+//             "userId": "1",
+//             "userName": "swayam"
+//         },
+//         {
+//             "userId": "2",
+//             "userName": "deep"
+//         }
+//     ]}
 
 function GroupSection() {
   return (
