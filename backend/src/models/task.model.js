@@ -14,6 +14,10 @@ const taskSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        projectName: {
+            type: String,
+            required: true,
+        },
         status: {
             type: String,
             required: true,
