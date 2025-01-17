@@ -6,11 +6,23 @@ const memberSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        userName: {
+            type: String,
+            required: true,
+        },
         taskId: {
             type: String,
             required: true,
         },
+        taskName: {
+            type: String,
+            required: true,
+        },
         projectId: {
+            type: String,
+            required: true,
+        },
+        projectName: {
             type: String,
             required: true,
         },
