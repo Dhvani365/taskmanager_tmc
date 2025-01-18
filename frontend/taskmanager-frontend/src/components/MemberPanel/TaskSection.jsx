@@ -14,11 +14,12 @@ const tasks = [
   },
 ];
 
-function TaskSection() {
+function TaskSection({ tasks }) {
   return (
     <div className="mt-2">
-      <Separator className="h-[2px] bg-black w-full rounded-md mt-2 mb-2" />
+      <Separator className="h-[2px] bg-gray-400 w-full rounded-md mt-2 mb-2" />
 
+      {/* Search Component */}
       <SearchComponent
         data={[
           {
@@ -28,14 +29,17 @@ function TaskSection() {
         ]}
       />
 
+      {/* Task Section Header */}
       <div className="flex items-center justify-between mt-4 px-4">
-        <h3 className="text-lg font-bold text-black dark:text-white">Common Group</h3>
-        <button className="px-3 py-1 bg-gold text-black rounded-md hover:bg-gold-dark transition">
-          Add
+        <h3 className="text-lg font-bold text-black dark:text-white">
+          Tasks
+        </h3>
+        <button className="pl-[28px] py-2 w-[140px] bg-yellow-200 text-black rounded-md hover:bg-yellow-300 transition">
+          + Add Tasks
         </button>
       </div>
 
-      {/* Render TasksList */}
+      {/* Tasks List */}
       <TasksList tasks={tasks} />
     </div>
   );

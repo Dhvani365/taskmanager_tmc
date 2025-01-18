@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import Dashboard from './pages/Dashboard';
 import LoginPage from './pages/LoginPage';
+import Members from './components/Members';
 
 const App = () => {
   return (
@@ -13,9 +14,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* <Route path="members/:projectId" element={<Members/>} /> */}
         </Routes>
       </Layout>
     </Router>

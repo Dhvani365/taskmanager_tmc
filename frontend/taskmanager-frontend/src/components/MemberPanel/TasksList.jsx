@@ -6,7 +6,7 @@ function TasksList({ tasks }) {
       {tasks.map((task) => (
         <li
           key={task.id}
-          className="flex items-center px-3 py-2 rounded-md bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+          className="flex cursor-pointer items-center px-3 py-2 rounded-md bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
         >
           <span className="text-black dark:text-white font-medium">
             {task.name}
