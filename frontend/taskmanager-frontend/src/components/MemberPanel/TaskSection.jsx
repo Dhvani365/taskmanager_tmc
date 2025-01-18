@@ -13,6 +13,22 @@ const tasks = [
     name: "Task2",
   },
 ];
+// link: 127.0.0.1:3000/api/task/getTask
+// format of data 
+// {
+//   "data": [
+//       {
+//           "taskId": "678a6328fb90a5039a81e7f7",
+//           "taskName": "apis",
+//           "taskDescription": "Create apis for frontend"
+//       },
+//       {
+//           "taskId": "678a63401461b7d87d8277ec",
+//           "taskName": "react pages",
+//           "taskDescription": "homepage for frontend"
+//       }
+//   ]
+// }
 
 function TaskSection() {
   return (
