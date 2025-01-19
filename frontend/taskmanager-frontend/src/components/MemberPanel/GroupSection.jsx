@@ -13,20 +13,8 @@ const members = [
     name: "Priya",
   },
 ];
-// link to api : 127.0.0.1:3000/api/member/getMembers
-// Data format from backend
-// {"data": [
-//         {
-//             "userId": "1",
-//             "userName": "swayam"
-//         },
-//         {
-//             "userId": "2",
-//             "userName": "deep"
-//         }
-//     ]}
 
-function GroupSection({ groups, members }) {
+function GroupSection({ groups, members, onChatSelect, selectedChat }) {
   return (
     <div className="mt-4 w-100">
       <Separator className="h-[2px] bg-gray-400 w-full rounded-md mt-2 mb-2" />
@@ -43,16 +31,16 @@ function GroupSection({ groups, members }) {
 
       {/* Group Section Header */}
       <div className="flex items-center justify-between mt-4 px-4">
-        <h3 className="text-lg font-bold text-black dark:text-white">
+        <h3 className="text-md font-bold text-black dark:text-white">
           Groups 
         </h3>
-        <button className="px-3 py-2 w-[140px] ml-[0px] bg-yellow-200 text-black rounded-md hover:bg-yellow-300 transition">
+        <button className="text-sm pl-5 py-2 w-[140px] ml-[10px] bg-yellow-200 text-black rounded-md hover:bg-yellow-300 transition">
           + Add Members
         </button>
       </div>
 
       {/* Members List */}
-      <MembersList members={members} common_group={groups.common}/>
+      <MembersList members={members} common_group={groups.common} onChatSelect={onChatSelect} selectedChat={selectedChat}/>
     </div>
   );
 }
