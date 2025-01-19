@@ -21,7 +21,8 @@ function ChatBox({ chat }) {
     }
 
     if (!member) {
-      navigate("/");
+      // navigate("/");
+      console.log("Member is not defined!")
     }
 
     setData({
@@ -39,7 +40,7 @@ function ChatBox({ chat }) {
     return () => {
       socket.off("receive-message");
     };
-  }, [chat, navigate]);
+  }, [chat]);
 
   const sendMessage = () => {
     if (newMessage.trim()) {
@@ -69,7 +70,6 @@ function ChatBox({ chat }) {
     <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
       <ChatHeader data={data} />
 
-      {/* Render Chat UI only when type is "member" */}
       {(type === "member" || type === "task") && (
         <>
           {/* Chat Messages */}
@@ -111,6 +111,53 @@ function ChatBox({ chat }) {
             />
             <button
               onClick={sendMessage}
+              className="bg-blue-500 text-white p-2 rounded"
+            >
+              Send
+            </button>
+          </div>
+        </>
+      )}
+      {type === "group" && (
+        <>
+          {/* Chat Messages */}
+          <div
+            className="flex-grow p-4 overflow-y-auto"
+            style={{ maxHeight: "70vh", borderBottom: "1px solid #ccc" }}
+          >
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`mb-4 flex ${msg.sender === "You" ? "justify-end" : "justify-start"}`}
+              >
+                <p
+                  className={`p-3 rounded-lg ${
+                    msg.sender === "You"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-black"
+                  }`}
+                  style={{
+                    maxWidth: "60%", // Control message width
+                    wordBreak: "break-word",
+                  }}
+                >
+                  <strong>{msg.sender}:</strong> {msg.content}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Input for New Messages */}
+          <div className="p-4 flex items-center">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Type your message..."
+              className="flex-grow p-2 border rounded mr-2"
+              onKeyDown={handleKeyPress}
+            />
+            <button
               className="bg-blue-500 text-white p-2 rounded"
             >
               Send

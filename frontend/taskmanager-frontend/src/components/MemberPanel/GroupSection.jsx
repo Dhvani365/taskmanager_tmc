@@ -14,7 +14,7 @@ const members = [
   },
 ];
 
-function GroupSection({ groups, members, onChatSelect, selectedChat }) {
+function GroupSection({ groups, members, onChatSelect, selectedChat, onMemberSelect }) {
   return (
     <div className="mt-4 w-100">
       <Separator className="h-[2px] bg-gray-400 w-full rounded-md mt-2 mb-2" />
@@ -40,7 +40,7 @@ function GroupSection({ groups, members, onChatSelect, selectedChat }) {
       </div>
 
       {/* Members List */}
-      <MembersList members={members} common_group={groups.common} onChatSelect={onChatSelect} selectedChat={selectedChat}/>
+      <MembersList members={members} common_group={groups.common} onChatSelect={onChatSelect} selectedChat={selectedChat} onMemberSelect={onMemberSelect}/>
     </div>
   );
 }

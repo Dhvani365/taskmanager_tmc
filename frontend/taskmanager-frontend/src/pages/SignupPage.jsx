@@ -1,35 +1,26 @@
-// src/pages/SignupPage.jsx
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     try {
       const response = await axios.post('http://localhost:3000/api/auth/signup', formData);
-  
       console.log('Signup successful:', response.data);
-      // Handle success (e.g., show a success message, redirect)
+      navigate('/'); // Redirect to LoginPage on successful signup
     } catch (error) {
       console.error('Error during signup:', error.response?.data || error.message);
-      // Handle error (e.g., show an error message)
+      setError(error.response?.data.message)
     }
   };
 
@@ -73,10 +64,11 @@ const SignupPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-left pl-[42%] w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Sign Up
           </button>
+          <p className='text-red-600'>{error}</p>
         </form>
       </div>
     </div>

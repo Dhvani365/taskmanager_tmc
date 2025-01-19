@@ -63,7 +63,7 @@ const projects = {
 //     "icon": "./image.png"
 // };
 
-function MemberSidebar({projectId, onChatSelect,selectedChat}) {
+function MemberSidebar({projectId, onChatSelect,selectedChat,onMemberSelect}) {
     // Fetch projects details from projectId
     // fetch members here
     // const role = server?.members.find((member)=>member.profileId===profile.id)?.role;
@@ -85,7 +85,7 @@ function MemberSidebar({projectId, onChatSelect,selectedChat}) {
         {/* Scrollable Area */}
         <ScrollArea className="flex-1 px-3">
           {/* Group Section */}
-          <GroupSection groups={project.groups} members={project.members} onChatSelect={onChatSelect} selectedChat={selectedChat}/>
+          <GroupSection groups={project.groups} members={project.members} onChatSelect={onChatSelect} selectedChat={selectedChat} onMemberSelect={onMemberSelect}/>
           
           {/* Task Section */}
           <TaskSection tasks={project.tasks} onChatSelect={onChatSelect} selectedChat={selectedChat}/>

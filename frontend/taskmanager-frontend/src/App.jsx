@@ -1,20 +1,29 @@
 // src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import Dashboard from './pages/Dashboard';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import Members from './components/Members';
+import SignupPage from './pages/SignupPage';
+import HomePage from './pages/HomePage';
+import Layout from './components/Layout';
+import ProtectedRoute from './pages/ProtectedRoutes';
+// import MemberTasks from './pages/MembersTask';
 
 const App = () => {
   return (
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="members/:projectId" element={<Members/>} /> */}
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/home" 
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route path="/members-task/:member-id" element={<MemberTasks />} /> */}
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Layout>
     </Router>

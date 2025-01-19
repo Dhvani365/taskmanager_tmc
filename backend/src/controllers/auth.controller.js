@@ -13,7 +13,7 @@ export const signup = async(req,res) => {
   try {
     if (password.length < 8){
       return res.status(400).json({
-        message: "Password must be greater than 6 Characters"
+        message: "Password must be greater than 8 Characters"
       });
     }
 
@@ -39,6 +39,7 @@ export const signup = async(req,res) => {
       res.status(201).json({
         _id:newUser._id,
         name: newUser.name,
+        token,
       })
     }else{
       return res.status(400).json({message:"Invalid User Data"});
@@ -70,6 +71,7 @@ export const login = async (req,res) => {
               res.status(201).json({
                 _id:user._id,
                 name: user.name,
+                token,
               })
             } else {
               return res.status(400).json({message :"Invalid Credentials"})

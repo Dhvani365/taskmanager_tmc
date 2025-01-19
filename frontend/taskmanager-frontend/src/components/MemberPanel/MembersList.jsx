@@ -1,10 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function MembersList({ members, common_group, onChatSelect, selectedChat }) {
+function MembersList({ members, common_group, onChatSelect, selectedChat, onMemberSelect }) {
+  const navigate = useNavigate();
+  
   function openChat(chat) {
+    const token = localStorage.getItem("token"); // Check authentication status
+    if (!token) {
+      alert("Please log in to continue.");
+      return;
+    }
     if (onChatSelect) {
       onChatSelect(chat);
     }
+  }
+
+  function openTasksList(member) {
+    onMemberSelect(member.id);
   }
 
   return (
@@ -28,7 +40,7 @@ function MembersList({ members, common_group, onChatSelect, selectedChat }) {
               ? "bg-blue-500 text-white"
               : "bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
           }`}
-          onClick={() => openChat({ type: "member", name: member.name })}
+          onClick={() => openTasksList({ type: "member", name: member.name, id:member.id})}
         >
           <span className="font-medium">{member.name}</span>
         </li>
