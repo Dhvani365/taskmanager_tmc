@@ -22,7 +22,7 @@ const projects = {
       },
       {
         id: "member3",
-        name: "Jiya",
+        name: "Riya",
       },
     ],
     tasks: [
@@ -63,28 +63,32 @@ const projects = {
 //     "icon": "./image.png"
 // };
 
-function MemberSidebar({projectId}) {
+function MemberSidebar({projectId, onChatSelect,selectedChat}) {
     // Fetch projects details from projectId
     // fetch members here
     // const role = server?.members.find((member)=>member.profileId===profile.id)?.role;
     if (!projectId) {
-      return <div className="text-center p-4">Select a project to view details.</div>;
+      return (
+      <>
+        <div className="flex flex-col h-full text-primary w-[250px] text-center mt-5 dark_bg-[#2B2D31] bg-[#F2F3F5]">Select a project to view details.</div>;
+      </>
+      )
     }
   
     const project = Object.values(projects).find((p) => p.project_id === projectId);
   
     return (
-      <div className="flex flex-col h-full text-primary w-[350px] dark_bg-[#2B2D31] bg-[#F2F3F5]">
+      <div className="flex flex-col h-full text-primary w-[250px] dark_bg-[#2B2D31] bg-[#F2F3F5]">
         {/* Project Header */}
         <SectionHeading project={project} />
   
         {/* Scrollable Area */}
         <ScrollArea className="flex-1 px-3">
           {/* Group Section */}
-          <GroupSection groups={project.groups} members={project.members} />
+          <GroupSection groups={project.groups} members={project.members} onChatSelect={onChatSelect} selectedChat={selectedChat}/>
           
           {/* Task Section */}
-          <TaskSection tasks={project.tasks} />
+          <TaskSection tasks={project.tasks} onChatSelect={onChatSelect} selectedChat={selectedChat}/>
         </ScrollArea>
       </div>
     );

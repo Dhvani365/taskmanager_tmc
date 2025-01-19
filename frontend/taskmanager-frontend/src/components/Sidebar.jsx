@@ -71,14 +71,14 @@ function NavigationItem({ id, name, onProjectSelect }) {
 
 function Sidebar({ onProjectSelect }) {
   return (
-    <div className="space-y-4 flex flex-col items-center h-full text-primary w-[300px] py-3 bg-zinc-900">
+    <div className="space-y-4 flex flex-col items-center h-full text-primary py-3 bg-zinc-900">
       <NavigationAction />
       <Separator
         className="h-[2px] bg-white w-20 rounded-md"
       />
       <ScrollArea className="flex-1 w-full">
         {Object.values(projects).map((project) => (
-          <div key={project.project_id} className="mb-4 ml-5">
+          <div key={project.project_id} className="mb-4">
             <NavigationItem id={project.project_id} name={project.project_name} onProjectSelect={onProjectSelect}/>
           </div>
         ))}
