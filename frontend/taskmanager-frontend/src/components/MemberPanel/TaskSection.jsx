@@ -13,24 +13,8 @@ const tasks = [
     name: "Task2",
   },
 ];
-// link: 127.0.0.1:3000/api/task/getTask
-// format of data 
-// {
-//   "data": [
-//       {
-//           "taskId": "678a6328fb90a5039a81e7f7",
-//           "taskName": "apis",
-//           "taskDescription": "Create apis for frontend"
-//       },
-//       {
-//           "taskId": "678a63401461b7d87d8277ec",
-//           "taskName": "react pages",
-//           "taskDescription": "homepage for frontend"
-//       }
-//   ]
-// }
 
-function TaskSection({ tasks }) {
+function TaskSection({ tasks,onChatSelect,selectedChat }) {
   return (
     <div className="mt-2">
       <Separator className="h-[2px] bg-gray-400 w-full rounded-md mt-2 mb-2" />
@@ -47,16 +31,16 @@ function TaskSection({ tasks }) {
 
       {/* Task Section Header */}
       <div className="flex items-center justify-between mt-4 px-4">
-        <h3 className="text-lg font-bold text-black dark:text-white">
-          Tasks
+        <h3 className="text-md font-bold text-black dark:text-white">
+          Tasks 
         </h3>
-        <button className="pl-[28px] py-2 w-[140px] bg-yellow-200 text-black rounded-md hover:bg-yellow-300 transition">
+        <button className="text-sm pl-7 py-2 w-[140px] ml-[10px] bg-yellow-200 text-black rounded-md hover:bg-yellow-300 transition">
           + Add Tasks
         </button>
       </div>
 
       {/* Tasks List */}
-      <TasksList tasks={tasks} />
+      <TasksList tasks={tasks} onChatSelect={onChatSelect} selectedChat={selectedChat}/>
     </div>
   );
 }
